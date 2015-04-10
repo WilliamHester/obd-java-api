@@ -12,22 +12,17 @@
  */
 package me.williamhester.obd.commands.protocol;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 
-public abstract class ObdProtocolCommand extends ObdCommand {
+public abstract class ObdProtocolCommand extends AbsObdCommand {
     /**
      * Default ctor to use
      */
-    public ObdProtocolCommand() {
-    }
+    public ObdProtocolCommand() { }
 
     @Override
     protected String getMode() {
         return "AT";
-    }
-
-    protected void performCalculations() {
-        // ignore
     }
 
     protected void fillBuffer() {

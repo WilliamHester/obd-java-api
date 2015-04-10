@@ -12,13 +12,13 @@
  */
 package me.williamhester.obd.commands.fuel;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.FuelTrim;
 
 /**
  * Fuel Trim.
  */
-public class FuelTrimObdCommand extends ObdCommand {
+public class FuelTrimObdCommand extends AbsObdCommand {
 
     private float fuelTrimValue = 0.0f;
     private final FuelTrim bank;

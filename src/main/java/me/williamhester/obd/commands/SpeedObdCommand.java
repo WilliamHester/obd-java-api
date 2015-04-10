@@ -17,7 +17,7 @@ import me.williamhester.obd.enums.AvailableCommandNames;
 /**
  * Current speed.
  */
-public class SpeedObdCommand extends ObdCommand implements SystemOfUnits {
+public class SpeedObdCommand extends AbsObdCommand implements SystemOfUnits {
 
     private int metricSpeed = 0;
 

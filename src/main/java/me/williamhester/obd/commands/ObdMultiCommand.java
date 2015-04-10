@@ -22,30 +22,30 @@ import java.util.ArrayList;
  */
 public class ObdMultiCommand {
 
-    private ArrayList<ObdCommand> commands;
+    private ArrayList<AbsObdCommand> commands;
 
     /**
      * Default ctor.
      */
     public ObdMultiCommand() {
-        this.commands = new ArrayList<ObdCommand>();
+        this.commands = new ArrayList<AbsObdCommand>();
     }
 
     /**
-     * Add ObdCommand to list of ObdCommands.
+     * Add AbsObdCommand to list of ObdCommands.
      *
-     * @param command a {@link ObdCommand} object.
+     * @param command a {@link AbsObdCommand} object.
      */
-    public void add(ObdCommand command) {
+    public void add(AbsObdCommand command) {
         this.commands.add(command);
     }
 
     /**
-     * Removes ObdCommand from the list of ObdCommands.
+     * Removes AbsObdCommand from the list of ObdCommands.
      *
-     * @param command a {@link ObdCommand} object.
+     * @param command a {@link AbsObdCommand} object.
      */
-    public void remove(ObdCommand command) {
+    public void remove(AbsObdCommand command) {
         this.commands.remove(command);
     }
 
@@ -59,7 +59,7 @@ public class ObdMultiCommand {
      */
     public void sendCommands(InputStream in, OutputStream out)
             throws IOException, InterruptedException {
-        for (ObdCommand command : commands)
+        for (AbsObdCommand command : commands)
             command.run(in, out);
     }
 
@@ -68,7 +68,7 @@ public class ObdMultiCommand {
      */
     public String getFormattedResult() {
         StringBuilder res = new StringBuilder();
-        for (ObdCommand command : commands)
+        for (AbsObdCommand command : commands)
             res.append(command.getFormattedResult()).append(",");
 
         return res.toString();

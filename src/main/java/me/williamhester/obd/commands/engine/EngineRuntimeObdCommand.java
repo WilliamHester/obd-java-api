@@ -12,13 +12,13 @@
  */
 package me.williamhester.obd.commands.engine;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 /**
  * Engine runtime.
  */
-public class EngineRuntimeObdCommand extends ObdCommand {
+public class EngineRuntimeObdCommand extends AbsObdCommand {
 
     private int value = 0;
 

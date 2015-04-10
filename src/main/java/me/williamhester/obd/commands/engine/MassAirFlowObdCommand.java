@@ -12,13 +12,13 @@
  */
 package me.williamhester.obd.commands.engine;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 /**
  * Mass Air Flow
  */
-public class MassAirFlowObdCommand extends ObdCommand {
+public class MassAirFlowObdCommand extends AbsObdCommand {
 
     private float maf = -1.0f;
 

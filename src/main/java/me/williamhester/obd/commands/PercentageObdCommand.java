@@ -15,7 +15,7 @@ package me.williamhester.obd.commands;
 /**
  * Abstract class for percentage commands.
  */
-public abstract class PercentageObdCommand extends ObdCommand {
+public abstract class PercentageObdCommand extends AbsObdCommand {
 
     private float percentage = 0f;
 

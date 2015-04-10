@@ -12,13 +12,13 @@
  */
 package me.williamhester.obd.commands.fuel;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 /**
  * Fuel Consumption Rate per hour.
  */
-public class FuelConsumptionRateObdCommand extends ObdCommand {
+public class FuelConsumptionRateObdCommand extends AbsObdCommand {
 
     private float fuelRate = -1.0f;
 

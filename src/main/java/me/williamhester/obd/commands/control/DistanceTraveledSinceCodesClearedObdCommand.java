@@ -12,14 +12,14 @@
  */
 package me.williamhester.obd.commands.control;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.commands.SystemOfUnits;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 /**
  * Distance traveled since codes cleared-up.
  */
-public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
+public class DistanceTraveledSinceCodesClearedObdCommand extends AbsObdCommand
         implements SystemOfUnits {
 
     private int km = 0;

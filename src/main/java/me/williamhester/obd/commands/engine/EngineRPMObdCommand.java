@@ -12,13 +12,13 @@
  */
 package me.williamhester.obd.commands.engine;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 /**
  * Displays the current engine revolutions per minute (RPM).
  */
-public class EngineRPMObdCommand extends ObdCommand {
+public class EngineRPMObdCommand extends AbsObdCommand {
 
     private int rpm = -1;
 

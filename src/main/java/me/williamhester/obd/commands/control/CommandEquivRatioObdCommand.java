@@ -12,7 +12,7 @@
  */
 package me.williamhester.obd.commands.control;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 /**
@@ -26,7 +26,7 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  * equivalence ratio of 0.95, the commanded A/F ratio to the engine would be
  * 14.64 * 0.95 = 13.9 A/F.
  */
-public class CommandEquivRatioObdCommand extends ObdCommand {
+public class CommandEquivRatioObdCommand extends AbsObdCommand {
 
     // Equivalent ratio (%)
     private double ratio = 0.00;

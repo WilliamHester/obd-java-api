@@ -12,7 +12,7 @@
  */
 package me.williamhester.obd.commands.control;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 /**
@@ -23,7 +23,7 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  * the response in order to store information about the availability and
  * completeness of certain on-board tests.
  */
-public class DtcNumberObdCommand extends ObdCommand {
+public class DtcNumberObdCommand extends AbsObdCommand {
 
     private int codeCount = 0;
     private boolean milOn = false;

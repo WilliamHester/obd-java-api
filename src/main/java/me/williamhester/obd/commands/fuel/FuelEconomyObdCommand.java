@@ -12,7 +12,7 @@
  */
 package me.williamhester.obd.commands.fuel;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.commands.SpeedObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
@@ -53,7 +53,7 @@ public class FuelEconomyObdCommand {
     }
 
     public String getFormattedResult() {
-        return ObdCommand.useImperialUnits ? String.format("%.1f %s", getMilesPerUKGallon(),
+        return AbsObdCommand.useImperialUnits ? String.format("%.1f %s", getMilesPerUKGallon(),
                 "mpg") : String.format("%.1f %s", kml, "l/100km");
     }
 

@@ -1,18 +1,17 @@
 package me.williamhester.obd.commands.control;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 
 /**
  * Created by william on 4/10/15.
  */
-public class ResetMilObdCommand extends ObdCommand {
+public class ResetMilObdCommand extends AbsObdCommand {
 
-    public ResetMilObdCommand() {
-    }
+    public ResetMilObdCommand() { }
 
     @Override
     protected String getCommand() {
-        return "00";
+        return null;
     }
 
     @Override
@@ -21,8 +20,8 @@ public class ResetMilObdCommand extends ObdCommand {
     }
 
     @Override
-    protected void performCalculations() {
-
+    protected void fillBuffer() {
+        // do nothing
     }
 
     @Override

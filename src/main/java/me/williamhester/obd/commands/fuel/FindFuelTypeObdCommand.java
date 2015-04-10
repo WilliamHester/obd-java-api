@@ -12,14 +12,14 @@
  */
 package me.williamhester.obd.commands.fuel;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 import me.williamhester.obd.enums.FuelType;
 
 /**
  * This command is intended to determine the vehicle fuel type.
  */
-public class FindFuelTypeObdCommand extends ObdCommand {
+public class FindFuelTypeObdCommand extends AbsObdCommand {
 
     private int fuelType = 0;
 

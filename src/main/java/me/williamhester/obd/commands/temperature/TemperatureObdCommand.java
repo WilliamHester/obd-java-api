@@ -12,13 +12,13 @@
  */
 package me.williamhester.obd.commands.temperature;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.commands.SystemOfUnits;
 
 /**
  * Abstract temperature command.
  */
-public abstract class TemperatureObdCommand extends ObdCommand implements
+public abstract class TemperatureObdCommand extends AbsObdCommand implements
         SystemOfUnits {
 
     private float temperature = 0.0f;

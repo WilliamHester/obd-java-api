@@ -12,13 +12,13 @@
  */
 package me.williamhester.obd.commands.pressure;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.commands.SystemOfUnits;
 
 /**
  * Abstract pressure command.
  */
-public abstract class PressureObdCommand extends ObdCommand implements
+public abstract class PressureObdCommand extends AbsObdCommand implements
         SystemOfUnits {
 
     protected int tempValue = 0;

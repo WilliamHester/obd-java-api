@@ -12,13 +12,13 @@
  */
 package me.williamhester.obd.commands.fuel;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 /**
  * Get fuel level in percentage
  */
-public class FuelLevelObdCommand extends ObdCommand {
+public class FuelLevelObdCommand extends AbsObdCommand {
 
     private float fuelLevel = 0f;
 

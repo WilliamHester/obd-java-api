@@ -12,7 +12,7 @@
  */
 package me.williamhester.obd.commands.control;
 
-import me.williamhester.obd.commands.ObdCommand;
+import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ import java.io.InputStream;
  * In one frame are stored 3 DTC.
  * If we find out DTC P0000 that mean no message are we can end.
  */
-public class TroubleCodesObdCommand extends ObdCommand {
+public class TroubleCodesObdCommand extends AbsObdCommand {
 
     protected final static char[] dtcLetters = {'P', 'C', 'B', 'U'};
     protected final static char[] hexArray = "0123456789ABCDEF".toCharArray();
