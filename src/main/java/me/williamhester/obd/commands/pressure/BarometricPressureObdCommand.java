@@ -19,20 +19,17 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class BarometricPressureObdCommand extends PressureObdCommand {
 
-  public BarometricPressureObdCommand() {
-    super("01 33");
-  }
+    public BarometricPressureObdCommand() {
+    }
 
-  /**
-   * @param other a {@link PressureObdCommand} object.
-   */
-  public BarometricPressureObdCommand(PressureObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "33";
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.BAROMETRIC_PRESSURE.getValue();
-  }
+    @Override
+    public String getName() {
+        return AvailableCommandNames.BAROMETRIC_PRESSURE.getValue();
+    }
 
 }

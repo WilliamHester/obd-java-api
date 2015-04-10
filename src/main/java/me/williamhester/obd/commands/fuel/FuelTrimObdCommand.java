@@ -20,57 +20,66 @@ import me.williamhester.obd.enums.FuelTrim;
  */
 public class FuelTrimObdCommand extends ObdCommand {
 
-  private float fuelTrimValue = 0.0f;
-  private final FuelTrim bank;
+    private float fuelTrimValue = 0.0f;
+    private final FuelTrim bank;
 
-  /**
-   * Default ctor.
-   * 
-   * Will read the bank from parameters and construct the command accordingly.
-   * Please, see FuelTrim enum for more details.
-   *
-   * @param bank a {@link me.williamhester.obd.enums.FuelTrim} object.
-   */
-  public FuelTrimObdCommand(final FuelTrim bank) {
-    super(bank.buildObdCommand());
-    this.bank = bank;
-  }
+    /**
+     * Default ctor.
+     * <p/>
+     * Will read the bank from parameters and construct the command accordingly.
+     * Please, see FuelTrim enum for more details.
+     *
+     * @param bank a {@link me.williamhester.obd.enums.FuelTrim} object.
+     */
+    public FuelTrimObdCommand(final FuelTrim bank) {
+        this.bank = bank;
+    }
 
-  /**
-   * @param value
-   * @return
-   */
-  private float prepareTempValue(final int value) {
-    return new Double((value - 128) * (100.0 / 128)).floatValue();
-  }
+    @Override
+    protected String getCommand() {
+        return bank.buildObdCommand();
+    }
 
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    fuelTrimValue = prepareTempValue(buffer.get(2));
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.2f%s", fuelTrimValue, "%");
-  }
+    /**
+     * @param value
+     * @return
+     */
+    private float prepareTempValue(final int value) {
+        return new Double((value - 128) * (100.0 / 128)).floatValue();
+    }
 
-  /**
-   * @return the readed Fuel Trim percentage value.
-   */
-  public final float getValue() {
-    return fuelTrimValue;
-  }
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        fuelTrimValue = prepareTempValue(buffer.get(2));
+    }
 
-  /**
-   * @return the name of the bank in string representation.
-   */
-  public final String getBank() {
-    return bank.getBank();
-  }
+    @Override
+    public String getFormattedResult() {
+        return String.format("%.2f%s", fuelTrimValue, "%");
+    }
 
-  @Override
-  public String getName() {
-    return bank.getBank();
-  }
+    /**
+     * @return the readed Fuel Trim percentage value.
+     */
+    public final float getValue() {
+        return fuelTrimValue;
+    }
+
+    /**
+     * @return the name of the bank in string representation.
+     */
+    public final String getBank() {
+        return bank.getBank();
+    }
+
+    @Override
+    public String getName() {
+        return bank.getBank();
+    }
 
 }

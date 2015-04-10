@@ -19,23 +19,32 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class EngineCoolantTemperatureObdCommand extends TemperatureObdCommand {
 
-  /**
-	 * 
-	 */
-  public EngineCoolantTemperatureObdCommand() {
-    super("01 05");
-  }
+    /**
+     *
+     */
+    public EngineCoolantTemperatureObdCommand() {
+    }
 
-  /**
-   * @param other a {@link TemperatureObdCommand} object.
-   */
-  public EngineCoolantTemperatureObdCommand(TemperatureObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "05";
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.ENGINE_COOLANT_TEMP.getValue();
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
+
+    /**
+     * @param other a {@link TemperatureObdCommand} object.
+     */
+    public EngineCoolantTemperatureObdCommand(TemperatureObdCommand other) {
+        super(other);
+    }
+
+    @Override
+    public String getName() {
+        return AvailableCommandNames.ENGINE_COOLANT_TEMP.getValue();
+    }
 
 }

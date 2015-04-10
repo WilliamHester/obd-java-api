@@ -17,8 +17,8 @@ package me.williamhester.obd.exceptions;
  */
 public class UnknownObdErrorException extends ObdResponseException {
 
-  public UnknownObdErrorException() {
-    super("ERROR");
-  }
+    public UnknownObdErrorException() {
+        super("ERROR");
+    }
 
 }

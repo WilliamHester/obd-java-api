@@ -22,57 +22,56 @@ import java.util.ArrayList;
  */
 public class ObdMultiCommand {
 
-  private ArrayList<ObdCommand> commands;
+    private ArrayList<ObdCommand> commands;
 
-  /**
-   * Default ctor.
-   */
-  public ObdMultiCommand() {
-    this.commands = new ArrayList<ObdCommand>();
-  }
+    /**
+     * Default ctor.
+     */
+    public ObdMultiCommand() {
+        this.commands = new ArrayList<ObdCommand>();
+    }
 
-  /**
-   * Add ObdCommand to list of ObdCommands.
-   *
-   * @param command a {@link ObdCommand} object.
-   */
-  public void add(ObdCommand command) {
-    this.commands.add(command);
-  }
+    /**
+     * Add ObdCommand to list of ObdCommands.
+     *
+     * @param command a {@link ObdCommand} object.
+     */
+    public void add(ObdCommand command) {
+        this.commands.add(command);
+    }
 
-  /**
-   * Removes ObdCommand from the list of ObdCommands.
-   *
-   * @param command a {@link ObdCommand} object.
-   */
-  public void remove(ObdCommand command) {
-    this.commands.remove(command);
-  }
+    /**
+     * Removes ObdCommand from the list of ObdCommands.
+     *
+     * @param command a {@link ObdCommand} object.
+     */
+    public void remove(ObdCommand command) {
+        this.commands.remove(command);
+    }
 
-  /**
-   * Iterate all commands, send them and read response.
-   *
-   * @param in a {@link java.io.InputStream} object.
-   * @param out a {@link java.io.OutputStream} object.
-   * @throws java.io.IOException if any.
-   * @throws java.lang.InterruptedException if any.
-   */
-  public void sendCommands(InputStream in, OutputStream out)
-      throws IOException, InterruptedException {
-    for (ObdCommand command : commands)
-      command.run(in, out);
-  }
+    /**
+     * Iterate all commands, send them and read response.
+     *
+     * @param in  a {@link java.io.InputStream} object.
+     * @param out a {@link java.io.OutputStream} object.
+     * @throws java.io.IOException            if any.
+     * @throws java.lang.InterruptedException if any.
+     */
+    public void sendCommands(InputStream in, OutputStream out)
+            throws IOException, InterruptedException {
+        for (ObdCommand command : commands)
+            command.run(in, out);
+    }
 
-  /**
-   * 
-   * @return a {@link java.lang.String} object.
-   */
-  public String getFormattedResult() {
-    StringBuilder res = new StringBuilder();
-    for (ObdCommand command : commands)
-      res.append(command.getFormattedResult()).append(",");
+    /**
+     * @return a {@link java.lang.String} object.
+     */
+    public String getFormattedResult() {
+        StringBuilder res = new StringBuilder();
+        for (ObdCommand command : commands)
+            res.append(command.getFormattedResult()).append(",");
 
-    return res.toString();
-  }
+        return res.toString();
+    }
 
 }

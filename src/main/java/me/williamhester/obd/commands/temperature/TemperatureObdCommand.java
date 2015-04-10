@@ -21,68 +21,56 @@ import me.williamhester.obd.commands.SystemOfUnits;
 public abstract class TemperatureObdCommand extends ObdCommand implements
         SystemOfUnits {
 
-  private float temperature = 0.0f;
+    private float temperature = 0.0f;
 
-  /**
-   * Default ctor.
-   *
-   * @param cmd a {@link java.lang.String} object.
-   */
-  public TemperatureObdCommand(String cmd) {
-    super(cmd);
-  }
+    /**
+     * Crates a new TemperatureObdCommand.
+     */
+    public TemperatureObdCommand() {
+    }
 
-  /**
-   * Copy ctor.
-   *
-   * @param other a {@link TemperatureObdCommand} object.
-   */
-  public TemperatureObdCommand(TemperatureObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        temperature = buffer.get(2) - 40;
+    }
 
-  @Override
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    temperature = buffer.get(2) - 40;
-  }
+    /**
+     * {@inheritDoc}
+     * <p/>
+     * Get values from 'buff', since we can't rely on char/string for
+     * calculations.
+     */
+    @Override
+    public String getFormattedResult() {
+        return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "F")
+                : String.format("%.0f%s", temperature, "C");
+    }
 
-  /**
-   * {@inheritDoc}
-   *
-   * Get values from 'buff', since we can't rely on char/string for
-   * calculations.
-   */
-  @Override
-  public String getFormattedResult() {
-    return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "F")
-        : String.format("%.0f%s", temperature, "C");
-  }
+    /**
+     * @return the temperature in Celsius.
+     */
+    public float getTemperature() {
+        return temperature;
+    }
 
-  /**
-   * @return the temperature in Celsius.
-   */
-  public float getTemperature() {
-    return temperature;
-  }
+    /**
+     * @return the temperature in Fahrenheit.
+     */
+    public float getImperialUnit() {
+        return temperature * 1.8f + 32;
+    }
 
-  /**
-   * @return the temperature in Fahrenheit.
-   */
-  public float getImperialUnit() {
-    return temperature * 1.8f + 32;
-  }
+    /**
+     * @return the temperature in Kelvin.
+     */
+    public float getKelvin() {
+        return temperature + 273.15f;
+    }
 
-  /**
-   * @return the temperature in Kelvin.
-   */
-  public float getKelvin() {
-    return temperature + 273.15f;
-  }
-
-  /**
-   * @return the OBD command name.
-   */
-  public abstract String getName();
+    /**
+     * @return the OBD command name.
+     */
+    public abstract String getName();
 
 }

@@ -17,41 +17,30 @@ package me.williamhester.obd.commands;
  */
 public abstract class PercentageObdCommand extends ObdCommand {
 
-  private float percentage = 0f;
+    private float percentage = 0f;
 
-  /**
-   * @param command a {@link java.lang.String} object.
-   */
-  public PercentageObdCommand(String command) {
-    super(command);
-  }
+    public PercentageObdCommand() {
+    }
 
-  /**
-   * @param other a {@link PercentageObdCommand} object.
-   */
-  public PercentageObdCommand(PercentageObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        percentage = (buffer.get(2) * 100.0f) / 255.0f;
+    }
 
-  @Override
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    percentage = (buffer.get(2) * 100.0f) / 255.0f;
-  }
+    /**
+     *
+     */
+    @Override
+    public String getFormattedResult() {
+        return String.format("%.1f%s", percentage, "%");
+    }
 
-  /**
-	 * 
-	 */
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.1f%s", percentage, "%");
-  }
-
-  /**
-   * @return a float.
-   */
-  public float getPercentage() {
-    return percentage;
-  }
+    /**
+     * @return a float.
+     */
+    public float getPercentage() {
+        return percentage;
+    }
 
 }

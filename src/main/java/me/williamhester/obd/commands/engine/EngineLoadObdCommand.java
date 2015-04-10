@@ -20,27 +20,28 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class EngineLoadObdCommand extends PercentageObdCommand {
 
-  public EngineLoadObdCommand() {
-    super("01 04");
-  }
+    public EngineLoadObdCommand() {
+        super("01 04");
+    }
 
-  /**
-   * <p>Constructor for EngineLoadObdCommand.</p>
-   *
-   * @param other a {@link EngineLoadObdCommand} object.
-   */
-  public EngineLoadObdCommand(EngineLoadObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "04";
+    }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see ObdCommand#getName()
-   */
-  @Override
-  public String getName() {
-    return AvailableCommandNames.ENGINE_LOAD.getValue();
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see ObdCommand#getName()
+     */
+    @Override
+    public String getName() {
+        return AvailableCommandNames.ENGINE_LOAD.getValue();
+    }
 
 }

@@ -20,48 +20,48 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class EngineRPMObdCommand extends ObdCommand {
 
-  private int rpm = -1;
+    private int rpm = -1;
 
-  /**
-   * Default ctor.
-   */
-  public EngineRPMObdCommand() {
-    super("01 0C");
-  }
+    /**
+     * Default ctor.
+     */
+    public EngineRPMObdCommand() {
+    }
 
-  /**
-   * Copy ctor.
-   *
-   * @param other a {@link EngineRPMObdCommand} object.
-   */
-  public EngineRPMObdCommand(EngineRPMObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "0C";
+    }
 
-  @Override
-  protected void performCalculations() {
-    // ignore first two bytes [41 0C] of the response
-    rpm = (buffer.get(2) * 256 + buffer.get(3)) / 4;
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
 
-  /**
-   * @return the engine RPM per minute
-   */
-  @Override
-  public String getFormattedResult() {
-    return String.format("%d%s", rpm, " RPM");
-  }
+    @Override
+    protected void performCalculations() {
+        // ignore first two bytes [41 0C] of the response
+        rpm = (buffer.get(2) * 256 + buffer.get(3)) / 4;
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.ENGINE_RPM.getValue();
-  }
+    /**
+     * @return the engine RPM per minute
+     */
+    @Override
+    public String getFormattedResult() {
+        return String.format("%d%s", rpm, " RPM");
+    }
 
-  /**
-   * @return a int.
-   */
-  public int getRPM() {
-    return rpm;
-  }
+    @Override
+    public String getName() {
+        return AvailableCommandNames.ENGINE_RPM.getValue();
+    }
+
+    /**
+     * @return a int.
+     */
+    public int getRPM() {
+        return rpm;
+    }
 
 }

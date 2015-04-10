@@ -19,22 +19,31 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class AmbientAirTemperatureObdCommand extends TemperatureObdCommand {
 
-  /**
-   */
-  public AmbientAirTemperatureObdCommand() {
-    super("01 46");
-  }
+    /**
+     */
+    public AmbientAirTemperatureObdCommand() {
+    }
 
-  /**
-   * @param other a {@link TemperatureObdCommand} object.
-   */
-  public AmbientAirTemperatureObdCommand(TemperatureObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "46";
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.AMBIENT_AIR_TEMP.getValue();
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
+
+    /**
+     * @param other a {@link TemperatureObdCommand} object.
+     */
+    public AmbientAirTemperatureObdCommand(TemperatureObdCommand other) {
+        super(other);
+    }
+
+    @Override
+    public String getName() {
+        return AvailableCommandNames.AMBIENT_AIR_TEMP.getValue();
+    }
 
 }

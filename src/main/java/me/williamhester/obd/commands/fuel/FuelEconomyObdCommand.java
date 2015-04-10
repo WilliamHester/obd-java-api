@@ -12,83 +12,74 @@
  */
 package me.williamhester.obd.commands.fuel;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import me.williamhester.obd.commands.ObdCommand;
 import me.williamhester.obd.commands.SpeedObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 /**
  * TODO put description
  */
-public class FuelEconomyObdCommand extends ObdCommand {
+public class FuelEconomyObdCommand {
 
-  protected float kml = -1.0f;
+    protected float kml = -1.0f;
 
-  /**
-   * Default ctor.
-   */
-  public FuelEconomyObdCommand() {
-    super("");
-  }
+    /**
+     * Default ctor.
+     */
+    public FuelEconomyObdCommand() {
+    }
 
-  @Override
-  protected void performCalculations() {
-    // do nothing as we're running a fake command
-  }
+    /**
+     * As it's a fake command, neither do we need to send request or read
+     * response.
+     */
+    public void run(InputStream in, OutputStream out) throws IOException,
+            InterruptedException {
+        // get consumption liters per hour
+        final FuelConsumptionRateObdCommand fuelConsumptionCommand = new FuelConsumptionRateObdCommand();
+        fuelConsumptionCommand.run(in, out);
 
-  /**
-   * As it's a fake command, neither do we need to send request or read
-   * response.
-   */
-  @Override
-  public void run(InputStream in, OutputStream out) throws IOException,
-      InterruptedException {
-    // get consumption liters per hour
-    final FuelConsumptionRateObdCommand fuelConsumptionCommand = new FuelConsumptionRateObdCommand();
-    fuelConsumptionCommand.run(in, out);
+        // get metric speed
+        final SpeedObdCommand speedCommand = new SpeedObdCommand();
+        speedCommand.run(in, out);
 
-    // get metric speed
-    final SpeedObdCommand speedCommand = new SpeedObdCommand();
-    speedCommand.run(in, out);
+        // get l/100km
+        kml = (100 / speedCommand.getMetricSpeed())
+                * fuelConsumptionCommand.getLitersPerHour();
+    }
 
-    // get l/100km
-    kml = (100 / speedCommand.getMetricSpeed())
-        * fuelConsumptionCommand.getLitersPerHour();
-  }
+    public String getFormattedResult() {
+        return ObdCommand.useImperialUnits ? String.format("%.1f %s", getMilesPerUKGallon(),
+                "mpg") : String.format("%.1f %s", kml, "l/100km");
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return useImperialUnits ? String.format("%.1f %s", getMilesPerUKGallon(),
-        "mpg") : String.format("%.1f %s", kml, "l/100km");
-  }
+    /**
+     * @return a float.
+     */
+    public float getLitersPer100Km() {
+        return kml;
+    }
 
-  /**
-   * @return a float.
-   */
-  public float getLitersPer100Km() {
-    return kml;
-  }
+    /**
+     * @return a float.
+     */
+    public float getMilesPerUSGallon() {
+        return 235.2f / kml;
+    }
 
-  /**
-   * @return a float.
-   */
-  public float getMilesPerUSGallon() {
-    return 235.2f / kml;
-  }
+    /**
+     * @return a float.
+     */
+    public float getMilesPerUKGallon() {
+        return 282.5f / kml;
+    }
 
-  /**
-   * @return a float.
-   */
-  public float getMilesPerUKGallon() {
-    return 282.5f / kml;
-  }
-
-  @Override
-  public String getName() {
-    return AvailableCommandNames.FUEL_ECONOMY.getValue();
-  }
+    public String getName() {
+        return AvailableCommandNames.FUEL_ECONOMY.getValue();
+    }
 
 }

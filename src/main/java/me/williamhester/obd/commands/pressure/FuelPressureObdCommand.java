@@ -16,30 +16,27 @@ import me.williamhester.obd.enums.AvailableCommandNames;
 
 public class FuelPressureObdCommand extends PressureObdCommand {
 
-  public FuelPressureObdCommand() {
-    super("010A");
-  }
+    public FuelPressureObdCommand() {
+    }
 
-  /**
-   * @param other a {@link FuelPressureObdCommand} object.
-   */
-  public FuelPressureObdCommand(FuelPressureObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "0A";
+    }
 
-  /**
-   * {@inheritDoc}
-   *
-   * TODO describe of why we multiply by 3
-   */
-  @Override
-  protected final int preparePressureValue() {
-    return buffer.get(2) * 3;
-  }
+    /**
+     * {@inheritDoc}
+     * <p/>
+     * TODO describe of why we multiply by 3
+     */
+    @Override
+    protected final int preparePressureValue() {
+        return buffer.get(2) * 3;
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.FUEL_PRESSURE.getValue();
-  }
+    @Override
+    public String getName() {
+        return AvailableCommandNames.FUEL_PRESSURE.getValue();
+    }
 
 }

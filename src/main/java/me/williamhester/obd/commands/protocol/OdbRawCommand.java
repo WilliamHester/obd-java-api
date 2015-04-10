@@ -17,11 +17,25 @@ package me.williamhester.obd.commands.protocol;
  */
 public class OdbRawCommand extends ObdProtocolCommand {
 
+    private String command;
+    private String mode;
+
     /**
      * @param command a {@link java.lang.String} object.
      */
-    public OdbRawCommand(String command) {
-        super(command);
+    public OdbRawCommand(String mode, String command) {
+        this.mode = mode;
+        this.command = command;
+    }
+
+    @Override
+    protected String getCommand() {
+        return command;
+    }
+
+    @Override
+    protected String getMode() {
+        return mode;
     }
 
     @Override
@@ -31,7 +45,7 @@ public class OdbRawCommand extends ObdProtocolCommand {
 
     @Override
     public String getName() {
-        return "Custom command " + getName();
+        return "Custom command " + getMode() + " " + getCommand();
     }
 
 }

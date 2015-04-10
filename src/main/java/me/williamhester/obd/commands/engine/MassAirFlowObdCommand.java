@@ -20,45 +20,45 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class MassAirFlowObdCommand extends ObdCommand {
 
-  private float maf = -1.0f;
+    private float maf = -1.0f;
 
-  /**
-   * Default ctor.
-   */
-  public MassAirFlowObdCommand() {
-    super("01 10");
-  }
+    /**
+     * Default ctor.
+     */
+    public MassAirFlowObdCommand() {
+    }
 
-  /**
-   * Copy ctor.
-   *
-   * @param other a {@link MassAirFlowObdCommand} object.
-   */
-  public MassAirFlowObdCommand(MassAirFlowObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "10";
+    }
 
-  @Override
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    maf = (buffer.get(2) * 256 + buffer.get(3)) / 100.0f;
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.2f%s", maf, "g/s");
-  }
+    @Override
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        maf = (buffer.get(2) * 256 + buffer.get(3)) / 100.0f;
+    }
 
-  /**
-   * @return MAF value for further calculus.
-   */
-  public double getMAF() {
-    return maf;
-  }
+    @Override
+    public String getFormattedResult() {
+        return String.format("%.2f%s", maf, "g/s");
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.MAF.getValue();
-  }
+    /**
+     * @return MAF value for further calculus.
+     */
+    public double getMAF() {
+        return maf;
+    }
+
+    @Override
+    public String getName() {
+        return AvailableCommandNames.MAF.getValue();
+    }
 
 }

@@ -19,64 +19,64 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class SpeedObdCommand extends ObdCommand implements SystemOfUnits {
 
-  private int metricSpeed = 0;
+    private int metricSpeed = 0;
 
-  /**
-   * Default ctor.
-   */
-  public SpeedObdCommand() {
-    super("01 0D");
-  }
+    /**
+     * Default ctor.
+     */
+    public SpeedObdCommand() {
+        super("01 0D");
+    }
 
-  /**
-   * Copy ctor.
-   *
-   * @param other a {@link SpeedObdCommand} object.
-   */
-  public SpeedObdCommand(SpeedObdCommand other) {
-    super(other);
-  }
+    /**
+     * Copy ctor.
+     *
+     * @param other a {@link SpeedObdCommand} object.
+     */
+    public SpeedObdCommand(SpeedObdCommand other) {
+        super(other);
+    }
 
-  @Override
-  protected void performCalculations() {
-    // Ignore first two bytes [hh hh] of the response.
-    metricSpeed = buffer.get(2);
-  }
+    @Override
+    protected void performCalculations() {
+        // Ignore first two bytes [hh hh] of the response.
+        metricSpeed = buffer.get(2);
+    }
 
-  /**
-   * @return a {@link java.lang.String} object.
-   */
-  public String getFormattedResult() {
-    return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), "mph")
-        : String.format("%d%s", getMetricSpeed(), "km/h");
-  }
+    /**
+     * @return a {@link java.lang.String} object.
+     */
+    public String getFormattedResult() {
+        return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), "mph")
+                : String.format("%d%s", getMetricSpeed(), "km/h");
+    }
 
-  /**
-   * @return the speed in metric units.
-   */
-  public int getMetricSpeed() {
-    return metricSpeed;
-  }
+    /**
+     * @return the speed in metric units.
+     */
+    public int getMetricSpeed() {
+        return metricSpeed;
+    }
 
-  /**
-   * @return the speed in imperial units.
-   */
-  public float getImperialSpeed() {
-    return getImperialUnit();
-  }
+    /**
+     * @return the speed in imperial units.
+     */
+    public float getImperialSpeed() {
+        return getImperialUnit();
+    }
 
-  /**
-   * Convert from km/h to mph
-   *
-   * @return a float.
-   */
-  public float getImperialUnit() {
-    return new Double(metricSpeed * 0.621371192).floatValue();
-  }
+    /**
+     * Convert from km/h to mph
+     *
+     * @return a float.
+     */
+    public float getImperialUnit() {
+        return new Double(metricSpeed * 0.621371192).floatValue();
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.SPEED.getValue();
-  }
+    @Override
+    public String getName() {
+        return AvailableCommandNames.SPEED.getValue();
+    }
 
 }

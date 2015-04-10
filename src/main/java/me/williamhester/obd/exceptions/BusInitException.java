@@ -17,8 +17,8 @@ package me.williamhester.obd.exceptions;
  */
 public class BusInitException extends ObdResponseException {
 
-  public BusInitException() {
-    super("BUS INIT... ERROR");
-  }
+    public BusInitException() {
+        super("BUS INIT... ERROR");
+    }
 
 }

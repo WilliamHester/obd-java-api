@@ -17,42 +17,42 @@ package me.williamhester.obd.exceptions;
  */
 public class ObdResponseException extends RuntimeException {
 
-  private String message;
+    private String message;
 
-  private String response;
+    private String response;
 
-  private String command;
+    private String command;
 
-  /**
-   * @param message a {@link java.lang.String} object.
-   */
-  protected ObdResponseException(String message) {
-    this.message = message;
-  }
+    /**
+     * @param message a {@link java.lang.String} object.
+     */
+    protected ObdResponseException(String message) {
+        this.message = message;
+    }
 
-  /**
-   * @param response a {@link java.lang.String} object.
-   * @return a boolean.
-   */
-  public boolean isError(String response) {
-    this.response = response;
-    return clean(response).contains(clean(message));
-  }
+    /**
+     * @param response a {@link java.lang.String} object.
+     * @return a boolean.
+     */
+    public boolean isError(String response) {
+        this.response = response;
+        return clean(response).contains(clean(message));
+    }
 
-  /**
-   * @param command a {@link java.lang.String} object.
-   */
-  public void setCommand(String command) {
-    this.command = command;
-  }
+    /**
+     * @param command a {@link java.lang.String} object.
+     */
+    public void setCommand(String command) {
+        this.command = command;
+    }
 
-  @Override
-  public String getMessage() {
-    return "Error running " + command + ", response: " + response;
-  }
+    @Override
+    public String getMessage() {
+        return "Error running " + command + ", response: " + response;
+    }
 
-  private static String clean(String s) {
-    return s == null ? "" : s.replaceAll("\\s", "").toUpperCase();
-  }
+    private static String clean(String s) {
+        return s == null ? "" : s.replaceAll("\\s", "").toUpperCase();
+    }
 
 }

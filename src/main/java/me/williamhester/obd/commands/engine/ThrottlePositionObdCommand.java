@@ -20,28 +20,28 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class ThrottlePositionObdCommand extends PercentageObdCommand {
 
-  /**
-   * Default ctor.
-   */
-  public ThrottlePositionObdCommand() {
-    super("01 11");
-  }
+    /**
+     * Default ctor.
+     */
+    public ThrottlePositionObdCommand() {
+    }
 
-  /**
-   * Copy ctor.
-   *
-   * @param other a {@link ThrottlePositionObdCommand} object.
-   */
-  public ThrottlePositionObdCommand(ThrottlePositionObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "11";
+    }
 
-  /**
-	 * 
-	 */
-  @Override
-  public String getName() {
-    return AvailableCommandNames.THROTTLE_POS.getValue();
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
+
+    /**
+     *
+     */
+    @Override
+    public String getName() {
+        return AvailableCommandNames.THROTTLE_POS.getValue();
+    }
 
 }

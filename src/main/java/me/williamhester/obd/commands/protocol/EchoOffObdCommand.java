@@ -17,27 +17,22 @@ package me.williamhester.obd.commands.protocol;
  */
 public class EchoOffObdCommand extends ObdProtocolCommand {
 
-	public EchoOffObdCommand() {
-		super("AT E0");
-	}
+    public EchoOffObdCommand() {
+    }
 
-	/**
-         * <p>Constructor for EchoOffObdCommand.</p>
-         *
-         * @param other a {@link EchoOffObdCommand} object.
-	 */
-	public EchoOffObdCommand(EchoOffObdCommand other) {
-		super(other);
-	}
-	
-	@Override
-	public String getFormattedResult() {
-		return getResult();
-	}
+    @Override
+    protected String getCommand() {
+        return "E0";
+    }
 
-	@Override
-	public String getName() {
-		return "Echo Off";
-	}
+    @Override
+    public String getFormattedResult() {
+        return getResult();
+    }
+
+    @Override
+    public String getName() {
+        return "Echo Off";
+    }
 
 }

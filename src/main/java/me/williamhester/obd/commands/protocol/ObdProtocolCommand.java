@@ -15,32 +15,23 @@ package me.williamhester.obd.commands.protocol;
 import me.williamhester.obd.commands.ObdCommand;
 
 public abstract class ObdProtocolCommand extends ObdCommand {
-  /**
-   * Default ctor to use
-   * 
-   * @param command
-   *          the command to send
-   */
-  public ObdProtocolCommand(String command) {
-    super(command);
-  }
+    /**
+     * Default ctor to use
+     */
+    public ObdProtocolCommand() {
+    }
 
-  /**
-   * Copy ctor.
-   * 
-   * @param other
-   *          the ObdCommand to copy.
-   */
-  public ObdProtocolCommand(ObdProtocolCommand other) {
-    this(other.cmd);
-  }
+    @Override
+    protected String getMode() {
+        return "AT";
+    }
 
-  protected void performCalculations() {
-    // ignore
-  }
+    protected void performCalculations() {
+        // ignore
+    }
 
-  protected void fillBuffer() {
-    // settings commands don't return a value appropriate to place into the
-    // buffer, so do nothing
-  }
+    protected void fillBuffer() {
+        // settings commands don't return a value appropriate to place into the
+        // buffer, so do nothing
+    }
 }

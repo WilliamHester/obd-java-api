@@ -19,25 +19,20 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class IntakeManifoldPressureObdCommand extends PressureObdCommand {
 
-  /**
-   * Default ctor.
-   */
-  public IntakeManifoldPressureObdCommand() {
-    super("01 0B");
-  }
+    /**
+     * Default ctor.
+     */
+    public IntakeManifoldPressureObdCommand() {
+    }
 
-  /**
-   * Copy ctor.
-   *
-   * @param other a {@link IntakeManifoldPressureObdCommand} object.
-   */
-  public IntakeManifoldPressureObdCommand(IntakeManifoldPressureObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "0B";
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.INTAKE_MANIFOLD_PRESSURE.getValue();
-  }
+    @Override
+    public String getName() {
+        return AvailableCommandNames.INTAKE_MANIFOLD_PRESSURE.getValue();
+    }
 
 }

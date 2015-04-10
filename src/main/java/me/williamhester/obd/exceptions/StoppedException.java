@@ -17,8 +17,8 @@ package me.williamhester.obd.exceptions;
  */
 public class StoppedException extends ObdResponseException {
 
-  public StoppedException() {
-    super("STOPPED");
-  }
+    public StoppedException() {
+        super("STOPPED");
+    }
 
 }

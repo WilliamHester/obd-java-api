@@ -17,8 +17,8 @@ package me.williamhester.obd.exceptions;
  */
 public class MisunderstoodCommandException extends ObdResponseException {
 
-  public MisunderstoodCommandException() {
-    super("?");
-  }
+    public MisunderstoodCommandException() {
+        super("?");
+    }
 
 }

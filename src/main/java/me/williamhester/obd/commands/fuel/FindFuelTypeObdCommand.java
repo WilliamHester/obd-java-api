@@ -21,42 +21,42 @@ import me.williamhester.obd.enums.FuelType;
  */
 public class FindFuelTypeObdCommand extends ObdCommand {
 
-  private int fuelType = 0;
+    private int fuelType = 0;
 
-  /**
-   * Default ctor.
-   */
-  public FindFuelTypeObdCommand() {
-    super("01 51");
-  }
-
-  /**
-   * Copy ctor
-   *
-   * @param other a {@link FindFuelTypeObdCommand} object.
-   */
-  public FindFuelTypeObdCommand(FindFuelTypeObdCommand other) {
-    super(other);
-  }
-
-  @Override
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    fuelType = buffer.get(2);
-  }
-
-  @Override
-  public String getFormattedResult() {
-    try {
-      return FuelType.fromValue(fuelType).getDescription();
-    } catch(Exception e) {
-      return "-";
+    /**
+     * Default ctor.
+     */
+    public FindFuelTypeObdCommand() {
     }
-  }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.FUEL_TYPE.getValue();
-  }
+    @Override
+    protected String getCommand() {
+        return "51";
+    }
+
+    @Override
+    protected String getMode() {
+        return "01";
+    }
+
+    @Override
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        fuelType = buffer.get(2);
+    }
+
+    @Override
+    public String getFormattedResult() {
+        try {
+            return FuelType.fromValue(fuelType).getDescription();
+        } catch (Exception e) {
+            return "-";
+        }
+    }
+
+    @Override
+    public String getName() {
+        return AvailableCommandNames.FUEL_TYPE.getValue();
+    }
 
 }

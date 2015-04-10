@@ -18,9 +18,9 @@ package me.williamhester.obd.commands;
  */
 public interface SystemOfUnits {
 
-        /**
-         * @return a float.
-         */
-	float getImperialUnit();
+    /**
+     * @return a float.
+     */
+    float getImperialUnit();
 
 }

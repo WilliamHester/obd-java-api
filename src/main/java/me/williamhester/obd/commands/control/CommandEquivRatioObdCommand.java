@@ -19,7 +19,7 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  * Fuel systems that use conventional oxygen sensor display the commanded open
  * loop equivalence ratio while the system is in open loop. Should report 100%
  * when in closed loop fuel.
- * <p>
+ * <p/>
  * To obtain the actual air/fuel ratio being commanded, multiply the
  * stoichiometric A/F ratio by the equivalence ratio. For example, gasoline,
  * stoichiometric is 14.64:1 ratio. If the fuel control system was commanded an
@@ -28,51 +28,60 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class CommandEquivRatioObdCommand extends ObdCommand {
 
-  // Equivalent ratio (%)
-  private double ratio = 0.00;
+    // Equivalent ratio (%)
+    private double ratio = 0.00;
 
-  /**
-   * Default ctor.
-   */
-  public CommandEquivRatioObdCommand() {
-    super("01 44");
-  }
+    /**
+     * Default ctor.
+     */
+    public CommandEquivRatioObdCommand() {
+    }
 
-  /**
-   * Copy ctor.
-   *
-   * @param other a {@link CommandEquivRatioObdCommand} object.
-   */
-  public CommandEquivRatioObdCommand(CommandEquivRatioObdCommand other) {
-    super(other);
-  }
+    /**
+     * Copy ctor.
+     *
+     * @param other a {@link CommandEquivRatioObdCommand} object.
+     */
+    public CommandEquivRatioObdCommand(CommandEquivRatioObdCommand other) {
+        super(other);
+    }
 
-  @Override
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    int a = buffer.get(2);
-    int b = buffer.get(3);
-    ratio = (a * 256 + b) / 32768;
-  }
+    @Override
+    protected String getCommand() {
+        return "44";
+    }
 
-  /**
-	 * 
-	 */
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.1f%s", ratio, "%");
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
 
-  /**
-   * @return a double.
-   */
-  public double getRatio() {
-    return ratio;
-  }
+    @Override
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        int a = buffer.get(2);
+        int b = buffer.get(3);
+        ratio = (a * 256 + b) / 32768;
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.EQUIV_RATIO.getValue();
-  }
+    /**
+     *
+     */
+    @Override
+    public String getFormattedResult() {
+        return String.format("%.1f%s", ratio, "%");
+    }
+
+    /**
+     * @return a double.
+     */
+    public double getRatio() {
+        return ratio;
+    }
+
+    @Override
+    public String getName() {
+        return AvailableCommandNames.EQUIV_RATIO.getValue();
+    }
 
 }

@@ -20,42 +20,42 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class FuelConsumptionRateObdCommand extends ObdCommand {
 
-  private float fuelRate = -1.0f;
+    private float fuelRate = -1.0f;
 
-  public FuelConsumptionRateObdCommand() {
-    super("01 5E");
-  }
+    public FuelConsumptionRateObdCommand() {
+    }
 
-  /**
-   * <p>Constructor for FuelConsumptionRateObdCommand.</p>
-   *
-   * @param other a {@link FuelConsumptionRateObdCommand} object.
-   */
-  public FuelConsumptionRateObdCommand(FuelConsumptionRateObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "5E";
+    }
 
-  @Override
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    fuelRate = (buffer.get(2) * 256 + buffer.get(3)) * 0.05f;
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.1f%s", fuelRate, "");
-  }
+    @Override
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        fuelRate = (buffer.get(2) * 256 + buffer.get(3)) * 0.05f;
+    }
 
-  /**
-   * @return a float.
-   */
-  public float getLitersPerHour() {
-    return fuelRate;
-  }
+    @Override
+    public String getFormattedResult() {
+        return String.format("%.1f%s", fuelRate, "");
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.FUEL_CONSUMPTION.getValue();
-  }
+    /**
+     * @return a float.
+     */
+    public float getLitersPerHour() {
+        return fuelRate;
+    }
+
+    @Override
+    public String getName() {
+        return AvailableCommandNames.FUEL_CONSUMPTION.getValue();
+    }
 
 }

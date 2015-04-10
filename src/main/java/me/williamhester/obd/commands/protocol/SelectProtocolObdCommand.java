@@ -19,25 +19,28 @@ import me.williamhester.obd.enums.ObdProtocols;
  */
 public class SelectProtocolObdCommand extends ObdProtocolCommand {
 
-  private final ObdProtocols protocol;
+    private final ObdProtocols protocol;
 
-  /**
-   *
-   * @param protocol a {@link me.williamhester.obd.enums.ObdProtocols} object.
-   */
-  public SelectProtocolObdCommand(final ObdProtocols protocol) {
-    super("AT SP " + protocol.getValue());
-    this.protocol = protocol;
-  }
+    /**
+     * @param protocol a {@link me.williamhester.obd.enums.ObdProtocols} object.
+     */
+    public SelectProtocolObdCommand(final ObdProtocols protocol) {
+        this.protocol = protocol;
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return getResult();
-  }
+    @Override
+    protected String getCommand() {
+        return "SP " + protocol.getValue();
+    }
 
-  @Override
-  public String getName() {
-    return "Select Protocol " + protocol.name();
-  }
+    @Override
+    public String getFormattedResult() {
+        return getResult();
+    }
+
+    @Override
+    public String getName() {
+        return "Select Protocol " + protocol.name();
+    }
 
 }

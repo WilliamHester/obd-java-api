@@ -17,25 +17,22 @@ package me.williamhester.obd.commands.protocol;
  */
 public class LineFeedOffObdCommand extends ObdProtocolCommand {
 
-  public LineFeedOffObdCommand() {
-    super("AT L0");
-  }
+    public LineFeedOffObdCommand() {
+    }
 
-  /**
-   * @param other a {@link LineFeedOffObdCommand} object.
-   */
-  public LineFeedOffObdCommand(LineFeedOffObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "L0";
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return getResult();
-  }
+    @Override
+    public String getFormattedResult() {
+        return getResult();
+    }
 
-  @Override
-  public String getName() {
-    return "Line Feed Off";
-  }
+    @Override
+    public String getName() {
+        return "Line Feed Off";
+    }
 
 }

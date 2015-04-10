@@ -21,62 +21,55 @@ import me.williamhester.obd.commands.SystemOfUnits;
 public abstract class PressureObdCommand extends ObdCommand implements
         SystemOfUnits {
 
-  protected int tempValue = 0;
-  protected int pressure = 0;
+    protected int tempValue = 0;
+    protected int pressure = 0;
 
-  /**
-   * Default ctor
-   *
-   * @param cmd a {@link java.lang.String} object.
-   */
-  public PressureObdCommand(String cmd) {
-    super(cmd);
-  }
+    /**
+     * Default ctor
+     */
+    public PressureObdCommand() {
+    }
 
-  /**
-   * Copy ctor.
-   *
-   * @param other a {@link PressureObdCommand} object.
-   */
-  public PressureObdCommand(PressureObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
 
-  /**
-   * Some PressureObdCommand subclasses will need to implement this method in
-   * order to determine the final kPa value.
-   * 
-   * *NEED* to read tempValue
-   *
-   * @return a int.
-   */
-  protected int preparePressureValue() {
-    return buffer.get(2);
-  }
+    /**
+     * Some PressureObdCommand subclasses will need to implement this method in
+     * order to determine the final kPa value.
+     * <p/>
+     * *NEED* to read tempValue
+     *
+     * @return a int.
+     */
+    protected int preparePressureValue() {
+        return buffer.get(2);
+    }
 
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    pressure = preparePressureValue();
-  }
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        pressure = preparePressureValue();
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "psi")
-        : String.format("%d%s", pressure, "kPa");
-  }
+    @Override
+    public String getFormattedResult() {
+        return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "psi")
+                : String.format("%d%s", pressure, "kPa");
+    }
 
-  /**
-   * @return the pressure in kPa
-   */
-  public int getMetricUnit() {
-    return pressure;
-  }
+    /**
+     * @return the pressure in kPa
+     */
+    public int getMetricUnit() {
+        return pressure;
+    }
 
-  /**
-   * @return the pressure in psi
-   */
-  public float getImperialUnit() {
-    return new Double(pressure * 0.145037738).floatValue();
-  }
+    /**
+     * @return the pressure in psi
+     */
+    public float getImperialUnit() {
+        return new Double(pressure * 0.145037738).floatValue();
+    }
 
 }

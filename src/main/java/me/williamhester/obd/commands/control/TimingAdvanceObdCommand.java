@@ -20,20 +20,22 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class TimingAdvanceObdCommand extends PercentageObdCommand {
 
-  public TimingAdvanceObdCommand() {
-    super("01 0E");
-  }
+    public TimingAdvanceObdCommand() {
+    }
 
-  /**
-   * @param other a {@link TimingAdvanceObdCommand} object.
-   */
-  public TimingAdvanceObdCommand(TimingAdvanceObdCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "0E";
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.TIMING_ADVANCE.getValue();
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
+
+    @Override
+    public String getName() {
+        return AvailableCommandNames.TIMING_ADVANCE.getValue();
+    }
 
 }

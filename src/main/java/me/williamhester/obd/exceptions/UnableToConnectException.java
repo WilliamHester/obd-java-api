@@ -17,8 +17,8 @@ package me.williamhester.obd.exceptions;
  */
 public class UnableToConnectException extends ObdResponseException {
 
-  public UnableToConnectException() {
-    super("UNABLE TO CONNECT");
-  }
+    public UnableToConnectException() {
+        super("UNABLE TO CONNECT");
+    }
 
 }

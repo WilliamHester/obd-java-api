@@ -17,26 +17,22 @@ package me.williamhester.obd.commands.protocol;
  */
 public class ObdResetCommand extends ObdProtocolCommand {
 
-  public ObdResetCommand() {
-    super("AT Z");
-  }
+    public ObdResetCommand() {
+    }
 
-  /**
-   *
-   * @param other a {@link ObdResetCommand} object.
-   */
-  public ObdResetCommand(ObdResetCommand other) {
-    super(other);
-  }
+    @Override
+    protected String getCommand() {
+        return "Z";
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return getResult();
-  }
+    @Override
+    public String getFormattedResult() {
+        return getResult();
+    }
 
-  @Override
-  public String getName() {
-    return "Reset OBD";
-  }
+    @Override
+    public String getName() {
+        return "Reset OBD";
+    }
 
 }

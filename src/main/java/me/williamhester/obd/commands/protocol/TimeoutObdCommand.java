@@ -18,30 +18,29 @@ package me.williamhester.obd.commands.protocol;
  */
 public class TimeoutObdCommand extends ObdProtocolCommand {
 
-  /**
-   * @param timeout
-   *          value between 0 and 255 that multiplied by 4 results in the
-   *          desired timeout in milliseconds (ms).
-   */
-  public TimeoutObdCommand(int timeout) {
-    super("AT ST " + Integer.toHexString(0xFF & timeout));
-  }
+    private int timeout;
 
-  /**
-   * @param other a {@link TimeoutObdCommand} object.
-   */
-  public TimeoutObdCommand(TimeoutObdCommand other) {
-    super(other);
-  }
+    /**
+     * @param timeout value between 0 and 255 that multiplied by 4 results in the
+     *                desired timeout in milliseconds (ms).
+     */
+    public TimeoutObdCommand(int timeout) {
+        this.timeout = timeout;
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return getResult();
-  }
+    @Override
+    protected String getCommand() {
+        return "ST " + Integer.toHexString(0xFF & timeout);
+    }
 
-  @Override
-  public String getName() {
-    return "Timeout";
-  }
+    @Override
+    public String getFormattedResult() {
+        return getResult();
+    }
+
+    @Override
+    public String getName() {
+        return "Timeout";
+    }
 
 }

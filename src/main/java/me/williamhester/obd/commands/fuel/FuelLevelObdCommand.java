@@ -20,33 +20,42 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class FuelLevelObdCommand extends ObdCommand {
 
-  private float fuelLevel = 0f;
+    private float fuelLevel = 0f;
 
-  public FuelLevelObdCommand() {
-    super("01 2F");
-  }
+    public FuelLevelObdCommand() {
+    }
 
-  @Override
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    fuelLevel = 100.0f * buffer.get(2) / 255.0f;
-  }
+    @Override
+    protected String getCommand() {
+        return "2F";
+    }
 
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.1f%s", fuelLevel, "%");
-  }
+    @Override
+    protected String getMode() {
+        return "01";
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.FUEL_LEVEL.getValue();
-  }
+    @Override
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        fuelLevel = 100.0f * buffer.get(2) / 255.0f;
+    }
 
-  /**
-   * @return a float.
-   */
-  public float getFuelLevel() {
-    return fuelLevel;
-  }
+    @Override
+    public String getFormattedResult() {
+        return String.format("%.1f%s", fuelLevel, "%");
+    }
+
+    @Override
+    public String getName() {
+        return AvailableCommandNames.FUEL_LEVEL.getValue();
+    }
+
+    /**
+     * @return a float.
+     */
+    public float getFuelLevel() {
+        return fuelLevel;
+    }
 
 }
