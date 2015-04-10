@@ -22,9 +22,6 @@ public class FuelConsumptionRateObdCommand extends AbsObdCommand {
 
     private float fuelRate = -1.0f;
 
-    public FuelConsumptionRateObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "5E";

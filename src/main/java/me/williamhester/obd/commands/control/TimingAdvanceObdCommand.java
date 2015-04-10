@@ -20,9 +20,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class TimingAdvanceObdCommand extends PercentageObdCommand {
 
-    public TimingAdvanceObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "0E";

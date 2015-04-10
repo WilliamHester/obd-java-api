@@ -1,4 +1,4 @@
-package me.williamhester.obd.commands.control;
+package me.williamhester.obd.commands.protocol;
 
 import me.williamhester.obd.commands.AbsObdCommand;
 
@@ -6,8 +6,6 @@ import me.williamhester.obd.commands.AbsObdCommand;
  * Created by william on 4/10/15.
  */
 public class ResetMilObdCommand extends AbsObdCommand {
-
-    public ResetMilObdCommand() { }
 
     @Override
     protected String getCommand() {

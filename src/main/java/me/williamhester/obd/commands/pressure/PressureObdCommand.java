@@ -12,6 +12,7 @@
  */
 package me.williamhester.obd.commands.pressure;
 
+import me.williamhester.obd.ObdConfig;
 import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.commands.SystemOfUnits;
 
@@ -23,12 +24,6 @@ public abstract class PressureObdCommand extends AbsObdCommand implements
 
     protected int tempValue = 0;
     protected int pressure = 0;
-
-    /**
-     * Default ctor
-     */
-    public PressureObdCommand() {
-    }
 
     @Override
     protected String getMode() {
@@ -54,7 +49,7 @@ public abstract class PressureObdCommand extends AbsObdCommand implements
 
     @Override
     public String getFormattedResult() {
-        return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "psi")
+        return ObdConfig.useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "psi")
                 : String.format("%d%s", pressure, "kPa");
     }
 

@@ -19,12 +19,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class EngineCoolantTemperatureObdCommand extends TemperatureObdCommand {
 
-    /**
-     *
-     */
-    public EngineCoolantTemperatureObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "05";

@@ -12,6 +12,7 @@
  */
 package me.williamhester.obd.commands.temperature;
 
+import me.williamhester.obd.ObdConfig;
 import me.williamhester.obd.commands.AbsObdCommand;
 import me.williamhester.obd.commands.SystemOfUnits;
 
@@ -22,12 +23,6 @@ public abstract class TemperatureObdCommand extends AbsObdCommand implements
         SystemOfUnits {
 
     private float temperature = 0.0f;
-
-    /**
-     * Crates a new TemperatureObdCommand.
-     */
-    public TemperatureObdCommand() {
-    }
 
     @Override
     protected void performCalculations() {
@@ -43,7 +38,7 @@ public abstract class TemperatureObdCommand extends AbsObdCommand implements
      */
     @Override
     public String getFormattedResult() {
-        return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "F")
+        return ObdConfig.useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "F")
                 : String.format("%.0f%s", temperature, "C");
     }
 

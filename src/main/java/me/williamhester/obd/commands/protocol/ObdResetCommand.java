@@ -17,9 +17,6 @@ package me.williamhester.obd.commands.protocol;
  */
 public class ObdResetCommand extends ObdProtocolCommand {
 
-    public ObdResetCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "Z";

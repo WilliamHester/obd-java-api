@@ -16,9 +16,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
 
 public class FuelPressureObdCommand extends PressureObdCommand {
 
-    public FuelPressureObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "0A";

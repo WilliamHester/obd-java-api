@@ -15,10 +15,6 @@ package me.williamhester.obd.commands.protocol;
 import me.williamhester.obd.commands.AbsObdCommand;
 
 public abstract class ObdProtocolCommand extends AbsObdCommand {
-    /**
-     * Default ctor to use
-     */
-    public ObdProtocolCommand() { }
 
     @Override
     protected String getMode() {

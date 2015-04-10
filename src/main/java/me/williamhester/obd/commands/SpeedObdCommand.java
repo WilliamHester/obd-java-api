@@ -12,6 +12,7 @@
  */
 package me.williamhester.obd.commands;
 
+import me.williamhester.obd.ObdConfig;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
 /**
@@ -20,11 +21,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
 public class SpeedObdCommand extends AbsObdCommand implements SystemOfUnits {
 
     private int metricSpeed = 0;
-
-    /**
-     * Default ctor.
-     */
-    public SpeedObdCommand() { }
 
     @Override
     protected String getCommand() {
@@ -46,7 +42,7 @@ public class SpeedObdCommand extends AbsObdCommand implements SystemOfUnits {
      * @return a {@link java.lang.String} object.
      */
     public String getFormattedResult() {
-        return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), "mph")
+        return ObdConfig.useImperialUnits ? String.format("%.2f%s", getImperialUnit(), "mph")
                 : String.format("%d%s", getMetricSpeed(), "km/h");
     }
 

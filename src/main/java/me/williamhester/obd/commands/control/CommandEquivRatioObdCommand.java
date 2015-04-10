@@ -31,11 +31,6 @@ public class CommandEquivRatioObdCommand extends AbsObdCommand {
     // Equivalent ratio (%)
     private double ratio = 0.00;
 
-    /**
-     * Default ctor.
-     */
-    public CommandEquivRatioObdCommand() { }
-
     @Override
     protected String getCommand() {
         return "44";

@@ -19,12 +19,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class IntakeManifoldPressureObdCommand extends PressureObdCommand {
 
-    /**
-     * Default ctor.
-     */
-    public IntakeManifoldPressureObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "0B";

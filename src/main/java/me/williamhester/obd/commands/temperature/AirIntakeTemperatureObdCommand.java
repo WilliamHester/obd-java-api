@@ -19,10 +19,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class AirIntakeTemperatureObdCommand extends TemperatureObdCommand {
 
-    public AirIntakeTemperatureObdCommand() {
-    }
-
-
     @Override
     protected String getCommand() {
         return "0F";

@@ -20,8 +20,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class EngineLoadObdCommand extends PercentageObdCommand {
 
-    public EngineLoadObdCommand() { }
-
     @Override
     protected String getCommand() {
         return "04";

@@ -23,12 +23,6 @@ public class FindFuelTypeObdCommand extends AbsObdCommand {
 
     private int fuelType = 0;
 
-    /**
-     * Default ctor.
-     */
-    public FindFuelTypeObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "51";

@@ -21,13 +21,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
 public class EngineRuntimeObdCommand extends AbsObdCommand {
 
     private int value = 0;
-
-    /**
-     * Default ctor.
-     */
-    public EngineRuntimeObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "1F";

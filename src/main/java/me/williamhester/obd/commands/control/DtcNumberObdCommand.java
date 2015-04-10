@@ -28,12 +28,6 @@ public class DtcNumberObdCommand extends AbsObdCommand {
     private int codeCount = 0;
     private boolean milOn = false;
 
-    /**
-     * Default ctor.
-     */
-    public DtcNumberObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "01";

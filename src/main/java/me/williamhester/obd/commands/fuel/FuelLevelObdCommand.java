@@ -22,9 +22,6 @@ public class FuelLevelObdCommand extends AbsObdCommand {
 
     private float fuelLevel = 0f;
 
-    public FuelLevelObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "2F";

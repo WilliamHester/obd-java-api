@@ -24,12 +24,6 @@ public class DistanceTraveledSinceCodesClearedObdCommand extends AbsObdCommand
 
     private int km = 0;
 
-    /**
-     * Default ctor.
-     */
-    public DistanceTraveledSinceCodesClearedObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "31";

@@ -12,7 +12,7 @@
  */
 package me.williamhester.obd.commands.fuel;
 
-import me.williamhester.obd.commands.AbsObdCommand;
+import me.williamhester.obd.ObdConfig;
 import me.williamhester.obd.commands.SpeedObdCommand;
 import me.williamhester.obd.enums.AvailableCommandNames;
 
@@ -26,12 +26,6 @@ import java.io.OutputStream;
 public class FuelEconomyObdCommand {
 
     protected float kml = -1.0f;
-
-    /**
-     * Default ctor.
-     */
-    public FuelEconomyObdCommand() {
-    }
 
     /**
      * As it's a fake command, neither do we need to send request or read
@@ -53,7 +47,7 @@ public class FuelEconomyObdCommand {
     }
 
     public String getFormattedResult() {
-        return AbsObdCommand.useImperialUnits ? String.format("%.1f %s", getMilesPerUKGallon(),
+        return ObdConfig.useImperialUnits ? String.format("%.1f %s", getMilesPerUKGallon(),
                 "mpg") : String.format("%.1f %s", kml, "l/100km");
     }
 

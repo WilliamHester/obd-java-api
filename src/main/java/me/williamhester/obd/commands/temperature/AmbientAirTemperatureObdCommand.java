@@ -19,11 +19,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class AmbientAirTemperatureObdCommand extends TemperatureObdCommand {
 
-    /**
-     */
-    public AmbientAirTemperatureObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "46";

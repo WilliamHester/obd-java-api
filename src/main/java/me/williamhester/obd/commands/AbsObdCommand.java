@@ -25,7 +25,6 @@ import java.util.ArrayList;
 public abstract class AbsObdCommand {
 
     protected final ArrayList<Integer> buffer = new ArrayList<Integer>();
-    public static boolean useImperialUnits;
     protected String rawData;
 
     /**
@@ -39,12 +38,6 @@ public abstract class AbsObdCommand {
             StoppedException.class,
             UnknownObdErrorException.class
     };
-
-    /**
-     * Creates a new Obd command.
-     */
-    public AbsObdCommand() {
-    }
 
     protected abstract String getCommand();
 
@@ -84,13 +77,13 @@ public abstract class AbsObdCommand {
         out.write((command).getBytes());
         out.flush();
 
-    /*
-     * HACK GOLDEN HAMMER ahead!!
-     * 
-     * Due to the time that some systems may take to respond, let's give it
-     * 200ms.
-     */
-//    Thread.sleep(200);
+        /*
+         * HACK GOLDEN HAMMER ahead!!
+         *
+         * Due to the time that some systems may take to respond, let's give it
+         * 200ms.
+         */
+        Thread.sleep(200);
     }
 
     /**
@@ -164,21 +157,21 @@ public abstract class AbsObdCommand {
         while ((char) (b = (byte) in.read()) != '>')
             res.append((char) b);
 
-    /*
-     * Imagine the following response 41 0c 00 0d.
-     * 
-     * ELM sends strings!! So, ELM puts spaces between each "byte". And pay
-     * attention to the fact that I've put the word byte in quotes, because 41
-     * is actually TWO bytes (two chars) in the socket. So, we must do some more
-     * processing..
-     */
+        /*
+         * Imagine the following response 41 0c 00 0d.
+         *
+         * ELM sends strings!! So, ELM puts spaces between each "byte". And pay
+         * attention to the fact that I've put the word byte in quotes, because 41
+         * is actually TWO bytes (two chars) in the socket. So, we must do some more
+         * processing..
+         */
         rawData = res.toString().trim();
 
-    /*
-     * Data may have echo or informative text like "INIT BUS..." or similar.
-     * The response ends with two carriage return characters. So we need to take
-     * everything from the last carriage return before those two (trimmed above).
-     */
+        /*
+         * Data may have echo or informative text like "INIT BUS..." or similar.
+         * The response ends with two carriage return characters. So we need to take
+         * everything from the last carriage return before those two (trimmed above).
+         */
         rawData = rawData.substring(rawData.lastIndexOf(13) + 1);
     }
 
@@ -218,23 +211,6 @@ public abstract class AbsObdCommand {
      */
     protected ArrayList<Integer> getBuffer() {
         return buffer;
-    }
-
-    /**
-     * @return true if imperial units are used, or false otherwise
-     */
-    public boolean useImperialUnits() {
-        return useImperialUnits;
-    }
-
-    /**
-     * Set to 'true' if you want to use imperial units, false otherwise. By
-     * default this value is set to 'false'.
-     *
-     * @param isImperial a boolean.
-     */
-    public void useImperialUnits(boolean isImperial) {
-        this.useImperialUnits = isImperial;
     }
 
     /**

@@ -19,9 +19,6 @@ public abstract class PercentageObdCommand extends AbsObdCommand {
 
     private float percentage = 0f;
 
-    public PercentageObdCommand() {
-    }
-
     @Override
     protected void performCalculations() {
         // ignore first two bytes [hh hh] of the response

@@ -22,12 +22,6 @@ public class EngineRPMObdCommand extends AbsObdCommand {
 
     private int rpm = -1;
 
-    /**
-     * Default ctor.
-     */
-    public EngineRPMObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "0C";

@@ -33,10 +33,6 @@ public class TroubleCodesObdCommand extends AbsObdCommand {
     private StringBuffer codes = new StringBuffer();
     private int howManyTroubleCodes = 0;
 
-
-    public TroubleCodesObdCommand() {
-    }
-
     /**
      * Not needed constructor left for working current view.
      *

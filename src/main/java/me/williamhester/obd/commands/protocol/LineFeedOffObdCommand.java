@@ -17,9 +17,6 @@ package me.williamhester.obd.commands.protocol;
  */
 public class LineFeedOffObdCommand extends ObdProtocolCommand {
 
-    public LineFeedOffObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "L0";

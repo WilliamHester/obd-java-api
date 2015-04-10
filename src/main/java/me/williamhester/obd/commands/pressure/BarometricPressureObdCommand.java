@@ -19,9 +19,6 @@ import me.williamhester.obd.enums.AvailableCommandNames;
  */
 public class BarometricPressureObdCommand extends PressureObdCommand {
 
-    public BarometricPressureObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "33";

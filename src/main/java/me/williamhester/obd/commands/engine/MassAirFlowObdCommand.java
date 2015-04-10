@@ -22,12 +22,6 @@ public class MassAirFlowObdCommand extends AbsObdCommand {
 
     private float maf = -1.0f;
 
-    /**
-     * Default ctor.
-     */
-    public MassAirFlowObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "10";

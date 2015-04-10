@@ -17,9 +17,6 @@ package me.williamhester.obd.commands.protocol;
  */
 public class EchoOffObdCommand extends ObdProtocolCommand {
 
-    public EchoOffObdCommand() {
-    }
-
     @Override
     protected String getCommand() {
         return "E0";
