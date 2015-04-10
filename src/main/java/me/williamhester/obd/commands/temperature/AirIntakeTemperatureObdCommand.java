@@ -33,13 +33,6 @@ public class AirIntakeTemperatureObdCommand extends TemperatureObdCommand {
         return "01";
     }
 
-    /**
-     * @param other a {@link AirIntakeTemperatureObdCommand} object.
-     */
-    public AirIntakeTemperatureObdCommand(AirIntakeTemperatureObdCommand other) {
-        super(other);
-    }
-
     @Override
     public String getName() {
         return AvailableCommandNames.AIR_INTAKE_TEMP.getValue();

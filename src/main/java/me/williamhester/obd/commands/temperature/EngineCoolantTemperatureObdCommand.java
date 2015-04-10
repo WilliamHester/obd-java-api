@@ -35,13 +35,6 @@ public class EngineCoolantTemperatureObdCommand extends TemperatureObdCommand {
         return "01";
     }
 
-    /**
-     * @param other a {@link TemperatureObdCommand} object.
-     */
-    public EngineCoolantTemperatureObdCommand(TemperatureObdCommand other) {
-        super(other);
-    }
-
     @Override
     public String getName() {
         return AvailableCommandNames.ENGINE_COOLANT_TEMP.getValue();

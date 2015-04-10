@@ -34,17 +34,7 @@ public class CommandEquivRatioObdCommand extends ObdCommand {
     /**
      * Default ctor.
      */
-    public CommandEquivRatioObdCommand() {
-    }
-
-    /**
-     * Copy ctor.
-     *
-     * @param other a {@link CommandEquivRatioObdCommand} object.
-     */
-    public CommandEquivRatioObdCommand(CommandEquivRatioObdCommand other) {
-        super(other);
-    }
+    public CommandEquivRatioObdCommand() { }
 
     @Override
     protected String getCommand() {

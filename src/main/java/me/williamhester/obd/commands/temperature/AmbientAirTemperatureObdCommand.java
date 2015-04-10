@@ -34,13 +34,6 @@ public class AmbientAirTemperatureObdCommand extends TemperatureObdCommand {
         return "01";
     }
 
-    /**
-     * @param other a {@link TemperatureObdCommand} object.
-     */
-    public AmbientAirTemperatureObdCommand(TemperatureObdCommand other) {
-        super(other);
-    }
-
     @Override
     public String getName() {
         return AvailableCommandNames.AMBIENT_AIR_TEMP.getValue();

@@ -24,17 +24,16 @@ public class SpeedObdCommand extends ObdCommand implements SystemOfUnits {
     /**
      * Default ctor.
      */
-    public SpeedObdCommand() {
-        super("01 0D");
+    public SpeedObdCommand() { }
+
+    @Override
+    protected String getCommand() {
+        return "0D";
     }
 
-    /**
-     * Copy ctor.
-     *
-     * @param other a {@link SpeedObdCommand} object.
-     */
-    public SpeedObdCommand(SpeedObdCommand other) {
-        super(other);
+    @Override
+    protected String getMode() {
+        return "01";
     }
 
     @Override
